@@ -13,10 +13,15 @@ class gradient{
             }
         ];
         this.theta = Math.PI * 0;
+        this.centerX = window.innerWidth / 2;
+        this.centerY = window.innerHeight / 2;
+        this.length = window.innerHeight;
+        this.timestamp = Date.now();
+    }
+    SetRange(WIDTH, HEIGHT){
         this.centerX = WIDTH/2;
         this.centerY = HEIGHT/2;
         this.length = HEIGHT;
-        this.timestamp = Date.now();
     }
     StyleNow = (theta=this.theta) => {
         let right = this.length/2 * Math.cos(theta);

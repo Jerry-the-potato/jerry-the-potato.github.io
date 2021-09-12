@@ -49,17 +49,20 @@ Select.addEventListener("change", function(){
 
 //取得 canvas 於頁面的位置
 //監聽canvas
+let a = 0, b = 0, c = 0, d = 0;
 canvas.addEventListener('mousemove', function (e) {
     let Rect = canvas.getBoundingClientRect();
     mouseX = (e.pageX - Rect.left) * RATIO;
     mouseY = (e.pageY - Rect.top) * RATIO;
+    a = (mouseX-window.innerWidth/2) / window.innerWidth*2;
+    b = (mouseY-window.innerHeight/2) / window.innerHeight*2;
 }, false);
 
-canvas.addEventListener('touchmove', function (e) {
-    let Rect = canvas.getBoundingClientRect();
-    mouseX = (e.touches[0].pageX - Rect.left) * RATIO;
-    mouseY = (e.touches[0].pageY - Rect.top) * RATIO;
-}, false);
+// canvas.addEventListener('touchmove', function (e) {
+//     let Rect = canvas.getBoundingClientRect();
+//     mouseX = (e.touches[0].pageX - Rect.left) * RATIO;
+//     mouseY = (e.touches[0].pageY - Rect.top) * RATIO;
+// }, false);
 
 
 // let SlideDevBox = (Text) => {
