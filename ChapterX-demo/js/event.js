@@ -1,6 +1,5 @@
 
 // event.js 處理所有事件監聽和使用者交互
-
 let Play = document.querySelector("#Play");
 let Pause = document.querySelector("#Pause");
 let Upload = document.querySelector("#Upload");
@@ -12,8 +11,10 @@ let audioControl = function(){
     let ID = this.attributes.id.nodeValue; // 'Play' or 'Pause'
     if(ID == "Play"){
         audioCtx.resume();
-        audio.play();
-        requestAnimationFrame(AnimationLoop);
+        if(audio.paused){
+            audio.play();
+            requestAnimationFrame(AnimationLoop);
+        }
     }
     else{
         audio.pause();
