@@ -27,7 +27,6 @@ function Resize(boxID, canvas, context, fillStyle=undefined){
             context.fillStyle = fillStyle;
             context.fill();
         }
-        Background.SetRange(WIDTH, HEIGHT);
     }
 }
 function Redraw(){
@@ -44,8 +43,14 @@ function Clear(context){
 function MouseAnime(){
     if(!isPathing){
         if(timer > 0){
-            cursorX+= distanceX / period;
-            cursorY+= distanceY / period;
+            let linear = 1/period;
+            let easeout = Math.pow(timer / period, 2) - Math.pow((timer-1) / period, 2);
+            let easein = Math.pow(1 - (timer-1) / period, 2) - Math.pow(1 - timer / period, 2);
+            let a = input.linear;
+            let b = input.easein;
+            let c = input.easeout;
+            cursorX+= (a * linear + b * easein + c * easeout) * distanceX;
+            cursorY+= (a * linear + b * easein + c * easeout) * distanceY;
             timer--;
         }
         else{
