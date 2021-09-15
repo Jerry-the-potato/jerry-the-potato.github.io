@@ -37,7 +37,7 @@ function Clear(context){
     // context.clearRect(0, 0, WIDTH, HEIGHT);
     context.beginPath();
     context.rect(0, 0, canvas.width, canvas.height);
-    context.fillStyle = 'rgba(0, 0, 0, 0.5)';
+    context.fillStyle = 'rgba(0, 0, 0, ' + alpha + ')';
     context.fill();
 }
 function MouseAnime(){

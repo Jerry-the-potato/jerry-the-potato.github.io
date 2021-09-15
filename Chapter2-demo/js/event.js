@@ -61,3 +61,13 @@ function ToggleAnime(){
         break;
     }
 }
+let alpha = 1;
+document.querySelector("#blurMode").addEventListener('click', () => alpha = 0.1);
+function ToggleBlur(){
+    if(alpha == 1){
+        alpha = 0.2;
+    }
+    else{
+        alpha = 1;
+    }
+}
