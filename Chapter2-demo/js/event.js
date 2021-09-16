@@ -62,10 +62,10 @@ function ToggleAnime(){
     }
 }
 let alpha = 1;
-document.querySelector("#blurMode").addEventListener('click', () => alpha = 0.1);
+document.querySelector("#blurMode").addEventListener('click', ToggleBlur);
 function ToggleBlur(){
     if(alpha == 1){
-        alpha = 0.2;
+        alpha = 0.1;
     }
     else{
         alpha = 1;
