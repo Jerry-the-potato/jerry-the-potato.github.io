@@ -1,0 +1,149 @@
+﻿<!DOCTYPE html>
+
+<html>
+    <head>
+		<meta charset="utf-8" >
+        <title>GT music</title>
+
+        <link rel="stylesheet" type="text/css" href="./main.css">
+        <!-- Javascript -->
+        <script src="./js/image.js"></script>
+        <script src="./js/window.js"></script>
+        <script src="./js/main.js"></script>
+    </head>
+
+
+    <body class="body">
+
+        <div id="gameBox">
+            <canvas id="canvasBG" width="2400" height="1440"></canvas>
+            <canvas id="mycanvas" width="2400" height="1440"></canvas>
+            <div id="devBox">
+                <canvas id="canvasDev" width="2400" height="1440"></canvas>
+                <div class="top">
+                    <button id="devBoxArrow" class="button" onclick="SlideDevBox(this.innerText)">＜</button>
+                    <script>
+                        let SlideDevBox = (Text) => {
+                            if(Text == "＜"){
+                                document.getElementById("devBox").style.top = "50%";
+                                document.getElementById("devBoxArrow").innerText = "＞";
+                            }
+                            else{
+                                document.getElementById("devBox").style.top = "100%";
+                                document.getElementById("devBoxArrow").innerText = "＜";
+                            }
+                        }
+                    </script>
+                </div>
+            </div>
+            <div id="hiddenMenu">
+                <div class="left">
+                    <button id="hiddenMenuArrow" class="button" onclick="SlideMenu(this.innerText)">＜</button>
+                    <script>
+                        let SlideMenu = (Text) => {
+                            if(Text == "＜"){
+                                document.getElementById("hiddenMenu").style.left = "85%";
+                                document.getElementById("hiddenMenuArrow").innerText = "＞";
+                            }
+                            else{
+                                document.getElementById("hiddenMenu").style.left = "100%";
+                                document.getElementById("hiddenMenuArrow").innerText = "＜";
+                            }
+                        }
+                    </script>
+                </div>
+                <div class="SettingBoard">
+                    <h3>選擇圖案</h3>
+                    <ul class="">
+                        <li><input id="geometry" class="button" type="button" value="幾何" onClick="SwitchImg('geometry')"></li>
+                        <li><input id="starmoon" class="button" type="button" value="星月" onClick="SwitchImg('starmoon')"></li>
+                        <script>
+                            focusImg = 'starmoon';
+                            let SwitchImg = (string) => {
+                                document.getElementById(focusImg).style.color = "rgba(179, 198, 213, 1)";
+                                document.getElementById(focusImg).style.background = "rgba(255, 255, 255, 0)";
+                                document.getElementById(string).style.color = "rgba(44, 66, 99, 1)";
+                                document.getElementById(string).style.background = "rgba(179, 198, 213, 1)";
+                                focusImg = string;
+                                pngImg = window[string + "Img"];
+                            }
+                            SwitchImg(focusImg);
+                        </script>
+                    </ul>
+                    <h3>動畫模式</h3>
+                    <ul class="">
+                        <li><input id="Floating" class="button" type="button" value="漩渦" onClick="SwitchAnime('Floating')"></li>
+                        <li><input id="Falling" class="button" type="button" value="秋風" onClick="SwitchAnime('Falling')"></li>
+                        <li><input id="Staring" class="button" type="button" value="星空" onClick="SwitchAnime('Staring')"></li>
+                        <script>
+                            focusAnime = 'Floating';
+                            let SwitchAnime = (string) => {
+                                document.getElementById(focusAnime).style.color = "rgba(179, 198, 213, 1)";
+                                document.getElementById(focusAnime).style.background = "rgba(255, 255, 255, 0)";
+                                document.getElementById(string).style.color = "rgba(44, 66, 99, 1)";
+                                document.getElementById(string).style.background = "rgba(179, 198, 213, 1)";
+                                focusAnime = string;
+                            }
+                            SwitchAnime(focusAnime);
+                        </script>
+                    </ul>
+                    <h3>消失速度</h3>
+                    <ul class="">
+                        <li><input id="15000ms" class="button" type="button" value="簡單" onClick="SwitchLifeCycle(15000)"></li>
+                        <li><input id="10000ms" class="button" type="button" value="一般" onClick="SwitchLifeCycle(10000)"></li>
+                        <li><input id="6000ms" class="button" type="button" value="困難" onClick="SwitchLifeCycle(6000)"></li>
+                        <script>
+                            focusLifeCycle = 10000;
+                            let SwitchLifeCycle = (number) => {
+                                document.getElementById(focusLifeCycle + "ms").style.color = "rgba(179, 198, 213, 1)";
+                                document.getElementById(focusLifeCycle + "ms").style.background = "rgba(255, 255, 255, 0)";
+                                document.getElementById(number + "ms").style.color = "rgba(44, 66, 99, 1)";
+                                document.getElementById(number + "ms").style.background = "rgba(179, 198, 213, 1)";
+                                focusLifeCycle = number;
+                            }
+                            SwitchLifeCycle(focusLifeCycle);
+                        </script>
+                    </ul>
+                    <h3>引力效果</h3>
+                    <ul class="">
+                        <li><input id="gravityOn" class="button" type="button" value="On" onClick="SwitchGravity('gravityOn')"></li>
+                        <li><input id="gravityOff" class="button" type="button" value="Off" onClick="SwitchGravity('gravityOff')"></li>
+                        <script>
+                            focusGravity = 'gravityOff';
+                            let SwitchGravity = (string) => {
+                                document.getElementById(focusGravity).style.color = "rgba(179, 198, 213, 1)";
+                                document.getElementById(focusGravity).style.background = "rgba(255, 255, 255, 0)";
+                                document.getElementById(string).style.color = "rgba(44, 66, 99, 1)";
+                                document.getElementById(string).style.background = "rgba(179, 198, 213, 1)";
+                                focusGravity = string;
+                            }
+                            SwitchGravity(focusGravity);
+                        </script>
+                    </ul>
+                </div>
+            </div>
+            <div class="gameMenu">
+                <button class="button" onClick="PlayOn(true)">Play</button>
+                <button class="button" onClick="PlayOn(false)">Pause</button>
+                <select class="button" name="SongName" id="SwitchSong" onchange="SwitchSong(this)">
+                    <option>- 請選擇曲名 -</option>
+                    <option value="Advertime.mp3">Advertime</option>
+                    <option value="Brothers Unite.mp3">Brothers Unite</option>
+                    <option value="Horizon Flare.mp3">Horizon Flare</option>
+                    <option value="Lovely Piano Song.mp3">Lovely Piano Song</option>
+                    <option value="Motions.mp3">Motions</option>
+                </select>
+
+                <input class="button" type="button" value="- 上傳音樂 -" onClick="document.getElementById('Upload').click()">
+                <input class="button" type="file" value="- 上傳音樂 -" accept="audio/*" style="display:none" id="Upload" onchange="UploadSong(this)">
+                <h3 id="SongLocation">(預設)audio: Advertime.mp3</h3>
+                <audio id="Music">
+                    <source src="../music/Advertime.mp3">
+                </audio>
+            </div>
+
+        </div>
+
+    </body>
+
+</html>

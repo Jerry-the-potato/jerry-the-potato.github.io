@@ -1,0 +1,134 @@
+html, body{
+	touch-action: none;
+	margin: 0;
+	border: 0;
+	padding: 0;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+audio{
+    position: absolute;
+    margin: 0.1em;
+}
+p, h2, h3{
+    margin: 0.5em;
+    font-family: 'setofont';
+    font-size: 1.2em;
+    color: rgba(179, 198, 213, 1);
+}
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+li {
+    margin-left: 0.5em;
+}
+select.song{
+    max-width: 7.5em;
+}
+
+#devBox{
+    position: absolute;
+    transition: 1s ease-in-out;
+    width: 100%;
+    height: 50%;
+    top: 100%;
+}
+    #canvasDev{
+        position: absolute;
+    }
+    #devBoxArrow{
+        position: absolute;
+        transform: rotate(90deg);
+        z-index: 5;
+    }
+#gameBox{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    overflow: hidden;
+}
+    #mycanvas, #canvasBG{
+        position: absolute;
+    }
+    #hiddenMenu{
+        position: absolute;
+        transition: 1s ease-in-out;
+        background-color: transparent;
+        top: 0%;
+        left: 100%;
+        width: 15%;
+        height: 100%;
+    }
+
+    .gameMenu{
+        position: absolute;
+        top: 1%; /*為了讓畫面和諧，要留1%空隙*/
+        left: 1%;
+    }
+
+/* 排版 */
+.left, .right{
+    position: absolute;
+    width: auto;
+    height: 0%;
+    top: 0;
+    bottom: 0;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+.left{
+    right: 101%;
+}
+.right{
+    left: 101%;
+
+}
+.top, .bottom{
+    position: absolute;
+    width: 0%;
+    height: auto;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+}
+.top{
+    bottom: 110%;
+}
+.bottom{
+    top: 101%;
+}
+
+/* 外型設計 */
+.button {
+    color: rgba(179, 198, 213, 1);
+    background-color: rgba(0, 0, 0, 1);
+    border-color: rgba(179, 198, 213, 1);
+    border-width: 0px;
+    border-radius: 10px;
+    box-shadow: inset 0 0 0 0.5px rgb(179 198 213);
+    padding: 0.2em;
+    margin: 0.05em;
+    outline: none;
+    cursor: pointer;
+    display: inline-block;
+    text-transform: uppercase;
+    font-family: 'setofont';
+    font-size: 1.2em;
+    appearance: none;
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+.button:hover {
+    color: rgba(44, 66, 99, 1) !important;
+    background-color: rgba(179, 198, 213, 1) !important;
+}
+.button:focus {
+    color: rgba(44, 66, 99, 0.9) !important;
+    background-color: rgba(179, 198, 213, 0.9) !important;
+}
