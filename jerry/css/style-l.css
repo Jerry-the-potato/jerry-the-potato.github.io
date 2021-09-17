@@ -1,0 +1,29 @@
+/* 基本版面架構 */
+html{
+    font-size: 16px;
+}
+#content{
+    margin-right: -300px;
+    font-size: 1rem;
+}
+#content #content-inner{
+    margin-right: 300px;
+}
+#sidebar{
+    width: 270px;
+}
+
+
+/* 頁首設定 */
+.description h1{
+    font-size: 2.8em;
+}
+.description p{
+    font-size: 1.4em;
+}
+#Elsa-box{
+	width: 45%;
+}
+#Elsa-mode h1{
+    font-size: 2.8em;
+}

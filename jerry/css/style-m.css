@@ -1,0 +1,48 @@
+@charset "UTF-8";
+/* CSS Document */
+
+/* 基本版面架構 */
+html{
+    font-size: 14px;
+}
+#containerCenter{
+    width: 95%;
+}
+    #content{
+        margin-right: -260px;
+        font-size: 1rem;
+    }
+    #content #content-inner{
+        margin-right: 260px;
+    }
+    #sidebar{
+        width: 230px;
+    }
+
+/* 頁首設定 */
+.description h1{
+    font-size: 2.2em;
+}
+.description p{
+    font-size: 1.2em;
+}
+#Elsa-box{
+	width: 50%;
+}
+#Elsa-mode h1{
+    font-size: 2.1em;
+}
+
+/* 內容區塊設定 */
+.post p img{
+    max-width: 40%;
+    height: auto;
+}
+    .date{
+        padding: 5px 10px 6px;
+    }
+
+/* 側欄設定 */
+#sidebar{
+    font-size: 1.2rem;
+}

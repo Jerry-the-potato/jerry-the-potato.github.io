@@ -1,0 +1,430 @@
+@charset "UTF-8";
+/* CSS Document */
+
+/* font */
+/* @font-face{
+    font-family: Setofont;
+    src: url("setofont.ttf");
+} */
+
+/* default css */
+h1, h2, h3, p, div, a, table, th, td, span, ul, ol, li{
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+    font-weight: normal;
+}
+ul, ol, li{
+    list-style-type: none;
+}
+a{
+    text-decoration: none;
+}
+button{
+    outline: none;
+    cursor: pointer;
+    display: inline-block;
+    text-transform: uppercase;
+    border-radius: 10px;
+    padding: 0.1em 0.15em;
+    margin: 0.05em;
+}
+a[disabled]{
+    pointer-events: none;
+    color: rgba(255, 255, 255, 0.55) !important;
+}
+img{
+    border: none;
+    margin: 0;
+    padding: 0;
+    vertical-align: bottom;
+}
+::selection{
+    color: var(--darker-color);
+    background-color: var(--contract-color);
+}
+
+
+
+/* 基本版面架構 */
+html{
+    font-family:  'IBM Plex Sans Arabic', 'Noto Sans TC', sans-serif;
+    font-size: 18px;
+    --main-color:     hsl(212, 78%, 35%);  /* hsl(255, 75%, 60%); */
+    --darker-color:   hsl(212, 75%, 15%);
+    --similar-color:  hsl(6, 100%, 65%);
+    --soft-color:     hsl(15, 100%, 80%);
+    --contract-color: hsl(15, 95%, 65%);
+    --base-color:     hsl(330, 100%, 96%);
+    --textbg-color:   rgba(255, 255, 255, 0.6);
+}
+body{
+    overflow-x: hidden;
+    margin: 0px;
+    background-color: var(--base-color);
+    background-image: linear-gradient(var(--base-color) 60%, #fff);
+}
+#header{
+    position: relative;
+    width: 100%;
+}
+    #cover{
+        position: fixed;
+        top: 0;
+        width: 100%;
+        height: 100%;
+    }
+#body-container{
+    position: relative;
+    /* width: 80%;
+    left: 50%;
+    transform: translateX(-50%); */
+}
+#container{
+    margin: 0 10px;
+}
+    #banner{
+        width: 100%;
+        height: 300px;
+        margin-bottom: 30px;
+    }
+    #content{
+        float: left;
+        width: 100%;
+        margin-right: -380px;
+        font-size: 1rem;
+    }
+    #content #content-inner{
+        margin-right: 380px;
+    }
+    #sidebar{
+        float: right;
+        width: 350px;
+    }
+    #footer{
+        position: relative;
+        clear: both;
+    }
+
+/* 選單設定 */
+#nav-box{
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    background-image: linear-gradient(var(--main-color) -50%, transparent 150%);
+}
+    #nav{
+        font-size: 1.5rem;
+        background-color: var(--main-color);
+        overflow: hidden;   
+        /* animation-name: hidenav;
+        animation-duration: 9s;
+        opacity: 0.6;
+        transition: opacity 0.5s ease; */
+    }
+    @keyframes hidenav{
+        6.5%, 25%, 85%{
+            opacity: 1;
+        }
+        0%, 13%{
+            opacity: 0.2;
+        }
+		100%{
+			opacity: 0.6;
+		}
+    }
+    #nav:hover{
+        opacity: 1;
+    }
+    #nav li{
+        float: left;
+        width: 12.5%;
+    }
+    #nav li a{
+        display: block;
+        padding: 0.5em 0;
+        border-right: solid 1px var(--base-color);
+        color: var(--base-color);
+        text-align: center;
+        transition: all 0.3s ease;
+    }
+    #nav li a:hover{
+        color: var(--darker-color);
+        background-color: var(--contract-color);
+		font-weight: bold;
+		text-transform: uppercase;
+    }
+	#menu-hamberger{
+		display: none;
+	}
+
+/* 頁首設定 */
+#header{
+    /* overflow: hidden; */
+}
+    @keyframes show_and_hide{
+        0%{
+            width: 0%;
+        }
+        40%, 60%{
+            width: 100%;
+        }
+        100%{
+            width: 0%;
+        }
+    }
+    #cover-box{
+        position: absolute;
+        width: 45%;
+        overflow: hidden;
+    }
+    #cover-title{
+        top: 0;
+        padding-right: 0px;
+        margin-bottom: 3em;
+        animation-name: show_and_hide;
+        animation-duration: 6s;
+        animation-delay: 2s;
+        width: 0%; /* 初始和最終位置，同時提供hover使用 */
+		box-sizing: border-box;
+        transition: 2s ease;
+        overflow: hidden;
+    }
+    #cover-title:hover, #cover-title:active{
+        width: 100%;
+        padding-right: 20px;
+    }
+    .description{
+        position: relative;
+        top: 3em;
+        background: var(--textbg-color);
+        color: var(--main-color);
+        display: inline-block;
+        text-align: center;
+        padding: 10px 20px 10px 20px;
+    }
+    .description h1{
+        font-size: 3em;
+        font-weight: bold;
+    }
+    .description h1 span{
+        font-weight: bold;
+        text-shadow: 1px 1px 0px var(--base-color), 1px -1px 0px var(--base-color), -1px -1px 0px var(--base-color), -1px 1px 0px var(--base-color);
+    }
+    .description p{
+        font-size: 1.5em;
+        font-weight: bold;
+        white-space: nowrap;
+    }
+        #Elsa-box{
+            position: absolute;
+            width: 35%;
+            right: 0%;
+            bottom: 4em;
+            overflow: hidden;
+        }
+        #Elsa-mode{
+            position: static;
+            width: 100%;
+			box-sizing: border-box;
+            margin-left: 90%;
+            transition: 2s ease;
+        }
+        #Elsa-mode:hover{
+            margin-left: 0%;
+        }
+        #Elsa-mode-tag{
+            position: absolute;
+            border-width: 1rem;
+            border-color: var(--contract-color) transparent transparent var(--similar-color);
+            border-style: solid;
+            margin-left: -20px;
+            margin-top: -10px;
+
+            /* transform: rotate(-45deg); */
+        }
+		#Elsa-mode h1{
+			font-size: 2.0em;
+		}
+        #Elsa-mode h1 button{
+            font-size: 0.875em;
+            color: var(--main-color);
+            background-color: transparent;
+            border-color: var(--main-color);
+            border-style: outset;
+            transition: all 0.2s ease;
+        }
+        #Elsa-mode h1 button:hover{
+            color: var(--darker-color);
+            background-color:  var(--contract-color);
+            border-color: var(--soft-color);
+        }
+        #Elsa-mode h1 button:focus{
+            color: var(--base-color);
+            background-color:  var(--contract-color);
+            border-color: var(--base-color);
+        }
+    #cover-bg{
+        position: absolute;
+        width: 110%;
+        height: 110%;
+        background-image: url("../images/headerbg-tiny.jpg");
+        background-size: cover;
+        background-position: 50% 100%;
+        transform: translate(-5%, -5%);
+    }
+    #cover-canvas{
+        position: absolute;
+    }
+    #cover-maskR, #cover-maskL{
+        position: absolute;
+        width: 120%;
+        height: 120%;
+        background-size: cover;
+    }
+    #cover-maskR{
+        background-image: url("../images/headermaskR-tiny2.png");
+        background-position: 90% 100%; /* R */
+        transform: translate(-10%, -10%);
+    }
+    #cover-maskL{
+        background-image: url("../images/headermaskL-tiny2.png");
+        background-position: 10% 100%; /* L */
+        transform: translate(-10%, -10%);
+    }
+#banner{
+    background-image: url("../images/banner-snowflask.jpg");
+    background-size: cover;
+    background-position: 50%, 50%;
+}
+
+/* 內容區塊設定 (container>content) */
+.post{
+    border: solid 1px #aaa;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    position: relative;
+}
+    .post article{
+        transition: max-Height 1s ease;
+        /* 隱藏文字 */
+        max-height: 8rem;
+        overflow: hidden;
+    }
+    .post article.open{
+        max-height: 720px;
+    }
+        .post a{
+            color: #000;
+            display: block;
+            padding: 10px;
+        }
+        .post a:hover{
+            background-color: var(--soft-color); /*避免瀏覽器不支援漸層*/
+            background-image: linear-gradient(var(--base-color) 55%, var(--soft-color));
+            border-radius: 9px;
+        }
+        .post a h2{
+            font-size: 1.375rem;
+            border-bottom: solid 1px #aaa;
+            margin: 6px 0 15px;
+            padding-bottom: 3px;
+            /* 限制單行 */
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+        .post a p{
+            font-size: 0.975rem;
+            line-height: 1.6;
+            margin-left: 5px;
+        }
+        .post a.open p{
+            display: contents;
+        }
+        .post a img{
+            max-width: 200px;
+            max-height: 8rem;
+            float: left;
+            margin-right: 10px;
+        }
+    .post .more{
+        background-image: url(../images/more_gray.png);
+        background-repeat: no-repeat;
+        background-position: 98% center;
+        text-align: right;
+        padding-right: calc(20px + 3%);
+        color: var(--similar-color);
+        bottom: 10px;
+        right: 10px;
+        transition: all 0.5 ease;
+    }
+    .post .more:hover{
+        color: var(--base-color);
+        background-color: var(--contract-color);
+        border-radius: 10px;
+    }
+.date{
+    float:left;
+    background-color: var(--similar-color);
+    padding: 5px 15px 8px;
+    margin: 0 10px 5px 0;
+    text-align: center;
+    font-family: Setofont;
+    font-weight: bold;
+    font-size: 1rem;
+    color: var(--base-color);
+}
+    .date span{
+        display: block;
+        font-size: 1.3rem;
+    }
+/* 側欄設定 (container>sidebar) */
+.ad a img{
+    width: 100%;
+    margin-bottom: 20px;
+}
+.menu{
+    background-color: var(--soft-color);
+    padding: 15px;
+    margin-bottom: 20px;
+}
+    .menu h3{
+        font-size: 1.375rem;
+        color: var(--darker-color);
+        margin-bottom: 25px;
+		font-weight: bold;
+    }
+    .menu ul{
+        border-top: solid 1px var(--darker-color);
+    }
+    .menu li{
+        border-bottom: solid 1px var(--darker-color);
+    }
+    .menu li a{
+        display: block;
+        padding: 10px 10px;
+        margin: 3px 0px;
+        border-radius: 1px;
+        color: var(--darker-color);
+        font-size: 0.875rem;
+        transition: all 0.3s ease;
+    }
+    .menu li a:hover{
+        color: var(--base-color);
+        background-color: var(--similar-color);
+    }
+
+/* 頁尾設定 */
+#footer{
+    font-size: 1.5rem;
+    color:var(--base-color);
+    background-color: var(--main-color);
+    padding: 0.5em;
+    text-align: center;
+}
+#footer small{
+    font-size: 0.75rem;
+    display: block;
+    margin-top: 5px;
+}

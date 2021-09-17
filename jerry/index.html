@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <!--設定FBOG-->
+    <meta property="og:title" content="JerryPotato"/>
+    <meta property="og:description" content="RWD切版練習" />
+    <meta property="og:image" content="images/favicon.ico">
+
+    <meta property="og:url" content="">
+    <meta property="og:type" content="website"/>
+    <meta property="og:site_name" content="JerryPotato"/>
+
+
+    <title>JerryPotato's Home</title>
+
+    <!--設定Css-->
+    <link rel="stylesheet" href="css/style-xl.css">
+    <link rel="stylesheet" href="css/style-l.css" media="(min-width:992px) and (max-width:1199px)">
+    <link rel="stylesheet" href="css/style-m.css" media="(min-width:650px) and (max-width:991px)">
+    <link rel="stylesheet" href="css/style-s.css" media="(max-width:649px)">
+
+    <!--設定我的最愛小圖示-->
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
+
+    <!--設定手機桌面小圖示-->
+    <link rel="apple-touch-icon" href="images/webicon.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!--設定Slogon文字-->
+    <link href="https://fonts.googleapis.com/css?family=Lily+Script+One" rel="stylesheet">
+    <!--設定內文字體-->
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300&family=Noto+Sans+TC:wght@300&display=swap" rel="stylesheet">
+
+
+</head>
+<body>
+    <div id="header">
+        <script> document.querySelector("#header").style.height = window.innerHeight + "px"; </script>
+        <div id="nav-box">
+            <div id="nav" style="display:block;">
+                <ul>
+					<li id="menu-hamberger">
+						<a href='javascript:void(0)'>
+							<div class="menu-icon">
+								<div class="menu-icon-bar"></div>
+								<div class="menu-icon-bar"></div>
+								<div class="menu-icon-bar"></div>
+							</div>
+						</a>
+					</li>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="pages.html">Pages</a></li>
+                    <li><a href="https://singandenjoy.000webhostapp.com/index2.html" target="_blank">About</a></li>
+                    <li><a disabled >Contact</a></li>
+                </ul>
+
+            </div>
+            <duv id="cover-box">
+                <div id="cover-title" class="description">
+                    <h1>Marvelous<span class="webfont">Experience</span></h1>
+                    <p>comfort, delight, joy, time for fun</p>
+                </div>
+            </duv>
+        </div>
+        <div id="cover">
+            <div id="cover-bg"></div>
+            <canvas id="cover-canvas"></canvas>
+            <div id="cover-maskL"></div>
+            <div id="cover-maskR"></div>
+            <div id="Elsa-box">
+                <div id="Elsa-mode" class="description">
+                    <div id="Elsa-mode-tag"></div>
+                    <h1>Elsa Mode
+                        <button id="Elsa-mode-on">On</button>
+                        <button id="Elsa-mode-off">Off</button>
+                    </h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="footer">
+        <p>
+            made by JerryPotato
+        </p>
+    </div>
+    <script type="text/javascript" src="./js/header_effect.js"></script>
+    <script type="text/javascript" src="./js/nav_effect.js"></script>
+    <script type="text/javascript" src="./js/post_effect.js"></script>
+</body>
+</html>
