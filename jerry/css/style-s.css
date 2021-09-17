@@ -79,8 +79,8 @@
 .date{
     padding: 3px 5px;
 }
-.post p img{
-    max-width: 40%;
+.post a img{
+    max-width: 30%;
     height: auto;
 }
 

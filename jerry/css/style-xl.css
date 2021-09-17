@@ -81,7 +81,7 @@ body{
     transform: translateX(-50%); */
 }
 #container{
-    margin: 0 10px;
+    margin: 0 20px;
 }
     #banner{
         width: 100%;
@@ -91,15 +91,15 @@ body{
     #content{
         float: left;
         width: 100%;
-        margin-right: -380px;
+        margin-right: -450px;
         font-size: 1rem;
     }
     #content #content-inner{
-        margin-right: 380px;
+        margin-right: 450px;
     }
     #sidebar{
         float: right;
-        width: 350px;
+        width: 400px;
     }
     #footer{
         position: relative;
