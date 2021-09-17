@@ -1,0 +1,120 @@
+    div.ui-slider-range.ui-widget-header {
+        background-color: #bbbbbb;
+    }
+    #map {
+        margin: 0 auto;
+        position: absolute;
+        top: 0%;
+        left: 0%;
+        z-index: -1;
+        cursor: none;
+    }
+    #mapUnseen {
+        position: absolute;
+        top: 0%;
+        left: 0%;
+        z-index: 0;
+    }
+    iframe{
+        position: absolute;
+        width: 500px;
+        height: 800px;
+        display: none;
+    }
+    body {
+        background-color: #000000;
+        background-size: cover;
+        margin: 10px;
+        padding: 0px;
+        z-index: 1;
+    }
+    header{
+        position: fixed;
+        top: 2em;
+        left: 1.5em;
+        z-index: 5;
+        font-size: 0.6em;
+        font-family: Microsoft YaHei UI;
+    }
+    header a{
+        text-decoration: none;
+        color: #fff;
+        font-size: 1.5em;
+        opacity: 0.6;
+    }
+    header a span{
+        font-size: 0.8em;
+    }
+    header a:hover {
+        color: #ffd;
+        opacity: 1;
+    }
+    .div_background {
+        background: url(StartScreen.jpg) center center fixed no-repeat;
+        background-size: cover;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 1520px;
+        height: 840px;
+        margin: -420px 0 0 -760px; /*放中間*/
+        z-index: 0; /*上下層關係，讓背景小於1*/
+    }
+
+    .div_svg {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 1520px;
+        height: 840px;
+        margin: -420px 0 0 -760px; /*放中間*/
+        z-index: 0; /*上下層關係，讓背景小於1*/
+    }
+
+    .div_table1 {
+        position: absolute;
+        top: 1%; /*為了讓畫面和諧，要留1%空隙*/
+        left: 1%;
+    }
+
+    .div_slider {
+        position: absolute;
+        top: 1%;
+        right: 1%;
+    }
+
+    .Cube {
+        position: fixed;
+        top: 0px;
+        width: 150px;
+        padding: 5px 20px;
+        /* 文字颜色 */
+        color: #00CCFF;
+        /* 清除背景色 */
+        background: transparent;
+        /* 边框样式、颜色、宽度 */
+        border: 2px solid #0099CC;
+        /* 给边框添加圆角 */
+        border-radius: 15px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 25px;
+        margin: 10px 5px;
+        cursor: pointer;
+        font-family: 'Microsoft YaHei UI';
+    }
+    .Cube:hover{
+        color: #004499;
+        border: 2px solid #004499;
+        background: #77AAEE;
+        top: -5px;
+        left: -15px;
+        font-size: 35px;
+    }
+
+    .div_recordlist {
+        position: absolute;
+        top: 150px;
+        right: 88px;
+    }
