@@ -105,14 +105,14 @@ class Picture {
 }
 var image1 = new Image(); // 定義image1元素
 var image2 = new Image();
-image1.src = "../images/Pic/snow1.png";
-image2.src = "../images/Pic/snow2.png";
+image1.src = "../images/pic/snow1.png";
+image2.src = "../images/pic/snow2.png";
 var Sparkle1 = new Image();
 var Sparkle2 = new Image();
 var Sparkle3 = new Image();
-Sparkle1.src = "../images/Pic/Sparkle1.png";
-Sparkle2.src = "../images/Pic/Sparkle2.png";
-Sparkle3.src = "../images/Pic/Sparkle3.png";
+Sparkle1.src = "../images/pic/Sparkle1.png";
+Sparkle2.src = "../images/pic/Sparkle2.png";
+Sparkle3.src = "../images/pic/Sparkle3.png";
 var StarrySky = new Image();
 var GroundTree = new Image();
 var SceneA = new Image();
