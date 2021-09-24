@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+
+<html>
+    <head>
+		<meta charset="utf-8" >
+        <title>Animation</title>
+
+        <link rel="stylesheet" type="text/css" href="./main.css">
+        <link rel="stylesheet" type="text/css" href="./mobile.css" media="(max-width:992px)">
+        <script src="./js/loadImg.js"></script>
+
+        <!--Google Fonts-->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300&family=Noto+Sans+TC:wght@300&display=swap" rel="stylesheet">
+    </head>
+
+
+    <body class="body">
+        <nav id="nav"></nav>
+        <div id="game-box">
+            <canvas id="canvas"></canvas>
+            <header id="header">
+                <div id="game-menu">
+                    <ul>
+                        <li><button id="linear">Linear</button></li>
+                        <li><button id="easein">Ease-in</button></li>
+                        <li><button id="easeout">Ease-out</button></li>
+                        <li><button id="special">Special</button></li>
+                        <li><button id="blurMode">Blur Mode(大面積模糊警告)</button></li>
+                        <li><button id="wind">Wind</button></li>
+                    </ul>
+                </div>
+                <div id="dialog-box">
+                    <h3 id="dialog">跟隨模式: (預設)Ease-out</h3>
+                    <p id="hint">hint: 請在下方canvas中拖曳滑鼠，整棵樹會隨著鼠標擺動，點擊左鍵可以重新產生一棵樹</p>
+                </div>
+            </header>
+        </div>
+
+        <!-- Javascript -->
+        <script src="./js/default.js"></script>
+        <script src="./js/mouse.js"></script>
+        <script src="./js/branches.js"></script>
+        <script src="./js/event.js"></script>
+        <script src="./js/main.js"></script>
+    </body>
+
+</html>
