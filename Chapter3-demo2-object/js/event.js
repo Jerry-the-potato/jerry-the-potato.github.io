@@ -8,7 +8,7 @@ let Rect = canvas.getBoundingClientRect();
 
 let isWinding = false;
 let a = 0, b = 0;
-let myTree = new Tree(window.innerWidth, window.innerHeight*2, window.innerHeight/3, 90, 8);
+let myTree = new Tree(window.innerWidth, window.innerHeight*2, window.innerHeight/3, 90, 7);
 
 canvas.addEventListener('mousemove', GetMouse);
 
@@ -30,7 +30,7 @@ canvas.addEventListener('click', Recreate);
 function Recreate(e){
     let x = (e.pageX - Rect.left) * RATIO;
     let y = (e.pageY - Rect.top) * RATIO;
-    let myTree = new Tree(window.innerWidth, window.innerHeight*2, window.innerHeight/3, 90, 5);
+    let myTree = new Tree(window.innerWidth, window.innerHeight*2, window.innerHeight/3, 90, 7);
 }
 
 
