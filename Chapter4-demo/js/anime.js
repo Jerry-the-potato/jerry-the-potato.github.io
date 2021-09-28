@@ -45,6 +45,13 @@ function animeObject(times, animeName='Falling',
         break;
     }
 }
+animeObject.prototype.SetPeriod = function(period=1, scaleX=1, scaleY=1){
+    this.period = period;
+    this.rotateOmega = 40 / this.period / 180 * Math.PI;
+    this.revolveOmega = 90 / this.period / 180 * Math.PI;
+    this.scaleX = scaleX;
+    this.scaleY = scaleY;
+}
 animeObject.prototype.NextFrame = function(){
 
     // 計算下一偵的位置
@@ -91,10 +98,16 @@ animeObject.prototype.Falling = function(dT){
     let distanceT = (Math.abs(dT - lT*0.35) + Math.abs(dT - lT*0.65)) / lT;
     this.sizeNow = WIDTH * this.size * (popSize + (1 - distanceT));
 }
-animeObject.prototype.SetPeriod = function(period=1, scaleX=1, scaleY=1){
-    this.period = period;
-    this.rotateOmega = 40 / this.period / 180 * Math.PI;
-    this.revolveOmega = 90 / this.period / 180 * Math.PI;
-    this.scaleX = scaleX;
-    this.scaleY = scaleY;
+animeObject.prototype.Floating = function(dT){
+    let revolveNow = this.revolveTheta + this.revolveOmega * dT;
+    let A = Math.sin(revolveNow);
+    let B = Math.cos(revolveNow);
+    let C = Math.sin(revolveNow * this.period);
+    let D = Math.cos(revolveNow * this.period);
+    this.pointX = this.beginX + this.scaleX * (this.period * WIDTH * 0.04 * A + WIDTH * 0.02 * dT);
+    this.pointY = this.beginY + this.scaleY * (this.period * HEIGHT * 0.02 * C + HEIGHT * 0.06 * dT);
+    const popSize = 0.2;
+    let lT = this.lifeTime;
+    let distanceT = (Math.abs(dT - lT*0.35) + Math.abs(dT - lT*0.65)) / lT;
+    this.sizeNow = WIDTH * this.size * (popSize + (1 - distanceT));
 }

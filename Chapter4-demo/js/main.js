@@ -59,7 +59,6 @@ function MouseAnime(){
             obj.scaleY = 1 + myMouse.pointY/2;
         }
     })
-
 }
 
 window.shrink = 1;//4 + Math.floor(4000 / WIDTH);
