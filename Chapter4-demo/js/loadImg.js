@@ -1,22 +1,18 @@
 let mouseImg = new Image();
-mouseImg.src = "../images/示意圖/示意圖4.jpg";
+mouseImg.src = "../images/pic/Sparkle2.png";
 
-let geometryImg = new Array();
-let starmoonImg = new Array();
-let pngImg = starmoonImg;
-for(let N = 0; N < 6; N++){
-    geometryImg[N] = new Image();
-    starmoonImg[N] = new Image();
+let theatherImg = new Array();
+let leafImg = new Array();
+let pngImg = leafImg;
+for(let N = 0; N < 4; N++){
+    theatherImg[N] = new Image();
+    leafImg[N] = new Image();
 }
-geometryImg[0].src = "../images/幾何圖形/b01.png";
-geometryImg[1].src = "../images/幾何圖形/b02.png";
-geometryImg[2].src = "../images/幾何圖形/b03.png";
-geometryImg[3].src = "../images/幾何圖形/b04.png";
-geometryImg[4].src = "../images/幾何圖形/+04.png";
-geometryImg[5].src = "../images/幾何圖形/-02.png";
-starmoonImg[0].src = "../images/基本/g01.png";
-starmoonImg[1].src = "../images/基本/g02.png";
-starmoonImg[2].src = "../images/基本/g05.png";
-starmoonImg[3].src = "../images/基本/g06.png";
-starmoonImg[4].src = "../images/基本/g+02.png";
-starmoonImg[5].src = "../images/基本/g+01.png";
+theatherImg[0].src = "../images/pic/theather.png";
+theatherImg[1].src = "../images/pic/theatherG.png";
+theatherImg[2].src = "../images/pic/theatherP.png";
+theatherImg[3].src = "../images/pic/theatherR.png";
+leafImg[0].src = "../images/pic/leave2O.png";
+leafImg[1].src = "../images/pic/leave2Y.png";
+leafImg[2].src = "../images/pic/leaveFR.png";
+leafImg[3].src = "../images/pic/leaveRY.png";
