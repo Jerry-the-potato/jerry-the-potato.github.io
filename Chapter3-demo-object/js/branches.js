@@ -1,113 +1,57 @@
 let random = (num) => {
     return Math.random() * num;
 };
-let treeNodes = new Array();
-let Tree = function(x, y, r, theta, times){
-    treeNodes = [this];
+let Tree = function(father, x, y, r, theta, times){
+    this.father = father;
+    this.grow = 0;
     this.startX = x;
     this.startY = y;
     this.endX = x + r * Math.cos(theta / 180 * Math.PI);
-    this.endY = y - r * Math.sin(theta / 180 * Math.PI);
+    this.endY = y + r * Math.sin(theta / 180 * Math.PI);
+    // this.shrink = 0.65 + random(0.1);
+    // this.diff = random(0.3) - 0.15;
     this.r = r;
     this.theta = theta;
-    this.grow = 0;
-    let shrink = 0.65 + random(0.1);
-    let diff = random(0.3) - 0.15; // +-0.15
-    this.son = [new Stick(this, (shrink - diff), 30 * (a+b+1), times - 1),
-                new Stick(this, (shrink + diff), 30 * (a-b-1), times - 1)];
-}
-let Stick = function(father, shrink_diff, angleOffset, times){
-
-    this.father = father;
-    this.r = this.father.r * (shrink_diff);
-    this.theta = this.father.theta + angleOffset;
-    this.grow = 0;
-    treeNodes.push(this);
     if(times > 0){
         let shrink = 0.65 + random(0.1);
         let diff = random(0.3) - 0.15; // +-0.15
-        this.son = [new Stick(this, (shrink - diff), 30 * (a+b+1), times - 1),
-                    new Stick(this, (shrink + diff), 30 * (a-b-1), times - 1)];
+        this.son = [new Tree(this, this.endX, this.endY,
+                             r * (shrink - diff),
+                             theta + 30 * (a+b+1), times - 1),
+                    new Tree(this, this.endX, this.endY,
+                             r * (shrink + diff), 
+                             theta + 30 * (a-b-1), times - 1)];
     }
-}
-// Tree.prototype.Update = function(){
-//     for(let N = 1; N < treeNodes.length; N++){
-//         let node = treeNodes[N];
-//         // 已知father, r, theta 三個參數，透過father取得座標後進行計算
-//         let x = node.father.endX;
-//         let y = node.father.endY;
-//         let r = node.r;
-//         let theta = node.theta;
-//         node.startX = x;
-//         node.startY = y;
-//         node.endX = x + r * Math.cos(theta / 180 * Math.PI);
-//         node.endY = y + r * Math.sin(theta / 180 * Math.PI);
-//     }
-// }
-Tree.prototype.Transform = function(){
-    let a = myMouse.pointX;
-    let b = myMouse.pointY;
-    for(let N = 1; N < treeNodes.length; N++){
-        let node = treeNodes[N];
-        let index = node.father.son.indexOf(node);
-        let parameter = ((index == 0)?(a+b+1):(a-b-1));
-        // if(index == 0) console.log(0);
-        // else console.log(1);
-        node.theta = node.father.theta + 30 * parameter;
-        // 已知father, r, theta 三個參數，透過father取得座標後進行計算
-        let x = node.father.endX;
-        let y = node.father.endY;
-        let r = node.r;
-        let theta = node.theta;
-        node.startX = x;
-        node.startY = y;
-        node.endX = x + r * Math.cos(theta / 180 * Math.PI);
-        node.endY = y - r * Math.sin(theta / 180 * Math.PI);
+    else{
+        // 如果要讓末端開花結果，就寫在這
     }
-};
-Tree.prototype.Draw = function(){
-    for(let N = 0; N < treeNodes.length; N++){
-        let node = treeNodes[N];
-        let x = (node.startX - WIDTH/2) * node.grow + WIDTH/2,
-            y = (node.startY - HEIGHT)* node.grow + HEIGHT,
-            r = node.r * node.grow,
-            theta = node.theta / 180 * Math.PI;
-        let x2 = x + r * Math.cos(theta);
-        let y2 = y - r * Math.sin(theta);
+    this.Transform = function(index){
+        if(this.father){
+            let a = myMouse.pointX;
+            let b = myMouse.pointY;
+            let parameter = ((index == 0)?(a+b+1):(a-b-1));
+            this.theta = this.father.theta + 30 * parameter;
+            this.startX = this.father.endX;
+            this.startY = this.father.endY;
+            this.endX = this.startX + this.r * Math.cos(this.theta / 180 * Math.PI);
+            this.endY = this.startY + this.r * Math.sin(this.theta / 180 * Math.PI);
+        }
+        if(this.son) this.son.forEach((branch, index) => branch.Transform(index));
+    };
+    this.Draw = function(){
+        let x = (this.startX - WIDTH/2) * this.grow + WIDTH/2,
+                         y = (this.startY - HEIGHT)* this.grow + HEIGHT,
+                         r = this.r * this.grow,
+                         theta = this.theta;
         context.beginPath();
         context.moveTo(x, y);
-        context.lineTo(x + r * Math.cos(theta),
-                       y - r * Math.sin(theta));
-        context.lineWidth = 0.5 + Math.pow(r, 1.1)/30;
-        context.strokeStyle = 'rgba(20, 0, 0, 1)';
+        context.lineTo(x + r * Math.cos(theta / 180 * Math.PI),
+                       y + r * Math.sin(theta / 180 * Math.PI));
+        context.lineWidth = 1 + r/50;
+        context.strokeStyle = 'rgba(179, 198, 213, 1)';
         context.stroke();
-        if(leafImg.complete){
-            if(node.son != undefined){
-                if(node.son[0].son == undefined){
-                    let width = r;
-                    let height = r * leafImg2.height / leafImg2.width;
-                    context.save();
-                    context.translate(x, y);
-                    context.rotate(-theta);
-                    context.translate(width/2, 0);
-                    context.rotate(Math.PI/4);
-                    context.drawImage(leafImg2, -width/2, -height/2, width, height);
-                    context.restore();
-                }
-            }
-            else if(node.son == undefined){
-                let width = r;
-                let height = r * leafImg.height / leafImg.width;
-                context.save();
-                context.translate(x, y);
-                context.rotate(-theta);
-                context.translate(width/2, 0);
-                context.rotate(Math.PI/2);
-                context.drawImage(leafImg, -width/2, -height/2, width, height);
-                context.restore();
-            }
-        }
-
-        node.grow = Math.min(node.grow + 0.01 / (0.8 + 2 * node.grow), 1);
-    }
+        // 如果有子樹枝，就繼續呼叫所有的子樹枝
+        if(this.son) this.son.forEach(branch => branch.Draw()); // 遞迴
+        this.grow = Math.min(this.grow + 0.01 / (0.8 + 2 * this.grow), 1);
+    };
 };
