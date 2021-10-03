@@ -1,7 +1,7 @@
 let random = (num) => {
     return Math.random() * num;
 };
-let treeNodes = [];
+let treeNodes = new Array();
 let Tree = function(x, y, r, theta, times){
     treeNodes = [this];
     this.startX = x;
@@ -66,7 +66,7 @@ Tree.prototype.Transform = function(){
     }
 };
 Tree.prototype.Draw = function(){
-    for(let N = 1; N < treeNodes.length; N++){
+    for(let N = 0; N < treeNodes.length; N++){
         let node = treeNodes[N];
         let x = (node.startX - WIDTH/2) * node.grow + WIDTH/2,
             y = (node.startY - HEIGHT)* node.grow + HEIGHT,
