@@ -20,21 +20,33 @@ function animeObject(times, animeName='Falling',
     this.revolveTheta = Math.random() * 360 / 180 * Math.PI;
     this.revolveOmega = 60 / this.period / 180 * Math.PI;
 
+    // 樹上如果沒有樹葉等待掉落，該陣列的長度則為0，則不會把物件送到動畫清單
     if(fallingNodes.length){
-        
+        // 隨機取用一個樹葉
         let ranIndex = Math.floor(Math.random() * fallingNodes.length);
         this.node = fallingNodes[ranIndex];
+        
+        // 檢查圖片來源是否有問題
         if(this.node.img == undefined) return;
+        
+        // 把我們剛剛設置的falling狀態改成true，靜態樹葉就不會再被繪製
         this.node.falling = true;
-        fallingNodes.splice(ranIndex, 1);
+        
+        // 以公轉角度去代入落葉的動畫公式
+        this.beginX = this.node.father.father.endX - this.period * WIDTH * 0.03 * Math.sin(this.revolveTheta);
+        this.beginY = this.node.father.father.endY - this.period * HEIGHT * 0.015 * Math.sin(this.revolveTheta * this.period);
+        
+        // 繼承原本樹葉的屬性
         this.rotateTheta = -Math.PI / 4 - this.node.theta / 180 * Math.PI;
-        // this.revolveTheta = 0;
         this.size = this.node.r * 1.5 / WIDTH;
-        this.beginX = this.node.father.father.endX - this.period * WIDTH * 0.02 * Math.sin(this.revolveTheta);
-        this.beginY = this.node.father.father.endY - this.period * HEIGHT * 0.01 * Math.sin(this.revolveTheta * this.period);
         this.img = this.node.img;
-        // this.img = pngImg['1'][2 + Math.floor(random(2))];
+        
+        // 前面都沒問題，則做最後處理：
+        // 1. 把該樹葉從等待掉落的陣列中移除
+        fallingNodes.splice(ranIndex, 1);
+        // 2. 把該樹葉送到動畫清單中
         animeList.push(this);
+        // 3. 根據音樂脈衝決定是否掉落更多樹葉
         if(times > 5) new animeObject(Math.pow(times, 0.9), animeName);
     }
 
@@ -143,8 +155,8 @@ animeObject.prototype.Falling = function(dT){
     let revolveNow = this.revolveTheta + this.revolveOmega * dT;
     let A = Math.sin(revolveNow);
     let C = Math.sin(revolveNow * this.period);
-    this.pointX = this.beginX + this.scaleX * (this.period * WIDTH * 0.02 * A + WIDTH * 0 * dT);
-    this.pointY = this.beginY + this.scaleY * (this.period * HEIGHT * 0.01 * C + HEIGHT * 0.04 * dT);
+    this.pointX = this.beginX + this.scaleX * (this.period * WIDTH * 0.03 * A + WIDTH * 0 * dT);
+    this.pointY = this.beginY + this.scaleY * (this.period * HEIGHT * 0.015 * C + HEIGHT * 0.04 * dT);
     this.sizeNow = WIDTH * this.size * (1 - 1 * dT / this.lifeTime);
 }
 animeObject.prototype.Floating = function(dT){
