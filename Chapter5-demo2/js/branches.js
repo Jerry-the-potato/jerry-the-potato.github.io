@@ -4,7 +4,7 @@ let random = (num) => {
 let treeNodes = new Array();
 let leafNodes = new Array();
 let fallingNodes = new Array();
-let Tree = function(x, y, r, theta, times, min = 0.02 * canvas.height){
+let Tree = function(x, y, r, theta, times, min = 0.015 * canvas.height + 0.007 * canvas.width){
     treeNodes = [this];
     leafNodes = [];
     fallingNodes = [];

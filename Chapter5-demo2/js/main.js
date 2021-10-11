@@ -85,10 +85,10 @@ function OpeningScreen(){
             camera.NewTarget(0, 0.3, 61);
         }
         else if(camera.period == 61){
-            camera.NewTarget(-0.1, 0.2, 62);
+            camera.NewTarget(-0.1, 0.25, 62);
         }
         else if(camera.period == 62){
-            camera.NewTarget(0, 0.1, 63);
+            camera.NewTarget(0, 0.2, 63);
         }
         else{
             audio.pause();

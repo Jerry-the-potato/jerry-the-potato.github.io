@@ -14,8 +14,8 @@ Resize("#game-box", canvas, context, '#000');
 function Resize(boxID, canvas, context, fillStyle=undefined){
     let width = document.body.clientWidth;
     let height = document.body.clientHeight;
-    if(width > height) width = Math.min(width, height*1.5);
-    else height = Math.min(width*1.5, height);
+    // if(width > height) width = Math.min(width, height*1.5);
+    // else height = Math.min(width*1.5, height);
     if(WIDTH != width * RATIO || HEIGHT != height * RATIO){
         WIDTH = width * RATIO;
         HEIGHT = height * RATIO;

@@ -100,7 +100,7 @@ animeObject.prototype.NextFrame = function(){
     let x = camera.pointX * WIDTH - 0 * (myMouse.pointX - 0.5 * WIDTH) * 0.1;
     let y = camera.pointY * HEIGHT - (myMouse.pointY - 0.5 * HEIGHT) * 0.1;
     let distance2p = Math.pow(this.pointX + x - myMouse.pointX, 2) + Math.pow(this.pointY + y - myMouse.pointY, 2);
-    let mouseWidth = WIDTH * 0.05;
+    let mouseWidth = 0.03 * WIDTH + 0.04 * HEIGHT;;
     let thisWidth = this.sizeNow;
     if(distance2p < Math.pow((mouseWidth * 0.4 + thisWidth * 0.5), 2)){
         // 加分，落葉救得越早分數越多
