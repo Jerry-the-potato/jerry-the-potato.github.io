@@ -92,11 +92,19 @@ Select.addEventListener("change", function(){
 let a = 0, b = 0;
 //canvas.addEventListener('mousemove', GetMouse);
 document.querySelector("#game-box").addEventListener('mousemove', GetMouse);
+document.querySelector("#game-box").addEventListener('touchmove', GetMouse);
 function GetMouse(e) {
     let Rect = canvas.getBoundingClientRect();
     if(true){
-        let x = (e.pageX - Rect.left) * RATIO;
-        let y = (e.pageY - Rect.top) * RATIO;
+        let x, y;
+        if(e.pageX){
+            x = (e.pageX - Rect.left) * RATIO;
+            y = (e.pageY - Rect.top) * RATIO;
+        }
+        else{
+            x = (e.touches[0].pageX - Rect.left) * RATIO;
+            y = (e.touches[0].pageY - Rect.top) * RATIO;
+        }
         a = (x - WIDTH / 2) / (WIDTH / 2);
         b = (y - HEIGHT / 2) / (HEIGHT / 2);
         a = 2 * Math.pow(a, 2) * ((a>0)?1:-1);
