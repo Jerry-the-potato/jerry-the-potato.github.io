@@ -1,4 +1,21 @@
+/* 基本版面架構 */
+html, body{
+    font-size: 8px;
+}
+
 /* 頁首設定 */
-#header{
-    font-size: 0.7em;
+#startScreen button, 
+#header #game-menu button, 
+#header #game-menu select{
+    padding: 0.7em 0.5em;
+}
+
+#header #game-menu select{
+    max-width: 8em;
+}
+
+#startScreen button:hover, 
+#header #game-menu button:hover, 
+#header #game-menu select:hover{
+    text-transform: none;
 }

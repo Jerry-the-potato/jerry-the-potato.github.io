@@ -12,11 +12,11 @@ let Select = document.querySelector("#Select");
 let dialog = document.querySelector("#dialog");
 
 const maxTimes = 8;
-let myTree = new Tree(WIDTH/2, 0.8 * HEIGHT, HEIGHT/6, 90, maxTimes);
+let myTree = new Tree(0.5 * WIDTH, 0.8 * HEIGHT, 0.12 * HEIGHT + 0.04 * WIDTH, 90, maxTimes);
 startScreen.addEventListener('click', MakeTree);
 function MakeTree(){
     treeGrowth.Restore();
-    myTree = new Tree(WIDTH/2, 0.8 * HEIGHT, HEIGHT/6, 90, maxTimes);
+    let myTree = new Tree(0.5 * WIDTH, 0.8 * HEIGHT, 0.12 * HEIGHT + 0.04 * WIDTH, 90, maxTimes);
 }
 
 Start.addEventListener("click", function(event){
@@ -44,21 +44,17 @@ let audioControl = function(){
     let ID = this.attributes.id.nodeValue; // 'Play' or 'Pause'
     if(ID == "Play"){
         audioCtx.resume();
-        if(!audio.paused) audio.pause();
         // 讓玩家發現，剛剛開場的那顆樹，已經默默地成長為參天大樹
-        myTree = new Tree(WIDTH/2, 0.8 * HEIGHT, 2.5 * HEIGHT/6, 90, maxTimes, 40);
+        myTree = new Tree(0.5 * WIDTH, 0.8 * HEIGHT, 0.14 * HEIGHT + 0.06 * WIDTH, 90, maxTimes);
 
         // 設定淡出和運鏡
         header.style.pointerEvents = "none";
         opacity.NewTarget(0, 0, 90);
-        camera.NewTarget(0.1, 0.3, 120);
+        camera.NewTarget(0.1, 0.1, 60);
 
         // 切換場景 1>2
         cancelAnimationFrame(loadingAnime);
         openingAnime = requestAnimationFrame(OpeningScreen);
-    }
-    else{
-        audio.pause();
     }
 }
 Play.addEventListener("click", audioControl, false);

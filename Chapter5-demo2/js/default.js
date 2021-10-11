@@ -12,9 +12,13 @@ let lineJoin = ['round','bevel','miter'];
 
 Resize("#game-box", canvas, context, '#000');
 function Resize(boxID, canvas, context, fillStyle=undefined){
-    if(WIDTH != window.innerWidth * RATIO || HEIGHT != window.innerHeight * RATIO){
-        WIDTH = window.innerWidth * RATIO;
-        HEIGHT = window.innerHeight * RATIO;
+    let width = document.body.clientWidth;
+    let height = document.body.clientHeight;
+    if(width > height) width = Math.min(width, height*1.5);
+    else height = Math.min(width*1.5, height);
+    if(WIDTH != width * RATIO || HEIGHT != height * RATIO){
+        WIDTH = width * RATIO;
+        HEIGHT = height * RATIO;
         let box = document.querySelector(boxID);
         canvas.width = WIDTH;
         canvas.height = HEIGHT;

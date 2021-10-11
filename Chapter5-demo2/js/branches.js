@@ -4,7 +4,7 @@ let random = (num) => {
 let treeNodes = new Array();
 let leafNodes = new Array();
 let fallingNodes = new Array();
-let Tree = function(x, y, r, theta, times, min = 15){
+let Tree = function(x, y, r, theta, times, min = 0.02 * canvas.height){
     treeNodes = [this];
     leafNodes = [];
     fallingNodes = [];
@@ -13,7 +13,7 @@ let Tree = function(x, y, r, theta, times, min = 15){
     this.r = r;
     this.theta = theta;
     Stick.prototype.grow = treeGrowth.pointX;
-    Stick.prototype.min = min * RATIO;
+    Stick.prototype.min = min;
     this.son = [new Stick(this, 1, 0, times)]
 }
 let Stick = function(father, shrink_diff, angleOffset, times){
@@ -33,9 +33,14 @@ let Stick = function(father, shrink_diff, angleOffset, times){
     treeNodes.push(this);
     let shrink = 0.65 + random(0.1);
     let diff = random(0.3) - 0.15; // +-0.15
+    if(HEIGHT > WIDTH) diff = random(0.15); // 手機端設定(長型螢幕)
     if(this.r > this.min * 2)
-        this.son = [new Stick(this, (shrink - diff), 30 * (diff + 1), times - 1),
-                    new Stick(this, (shrink + diff), 30 * (diff - 1), times - 1)];
+        if(this.theta > 90) // 若為長型螢幕，讓樹向上生長
+            this.son = [new Stick(this, (shrink - diff), 30 * (diff + 1), times - 1),
+                        new Stick(this, (shrink + diff), 30 * (diff - 1), times - 1)];
+        else
+            this.son = [new Stick(this, (shrink + diff), 30 * (diff + 1), times - 1),
+                        new Stick(this, (shrink - diff), 30 * (diff - 1), times - 1)];
     else
         this.son = [new Stick(this, (shrink - diff), 30 * (diff + 1), times - 1),
                     new Stick(this, (shrink + diff), 30 * (diff - 1), times - 1),

@@ -57,40 +57,43 @@ function OpeningScreen(){
             opacity.NextFrame(1, 0, 2);
             let header = document.getElementsByTagName("header")[0];
             header.style.opacity = opacity.pointX;
+            audio.volume = Math.max(Math.min(opacity.pointX, 1), 0);
         }
 
         let x = camera.pointX * WIDTH;
-        let y = camera.pointY * HEIGHT * 1;
+        let y = camera.pointY * HEIGHT;
         context.translate(x, y);
         myTree.Transform();
         myTree.Draw();
         context.translate(-x, -y);
         // 2. 運鏡
         if(camera.timer > 0){
-            if(camera.period == 120){
+            if(camera.period == 60){
                 camera.NextFrame(1, 1.5, 0);
             }
-            else if(camera.period == 121){
+            else if(camera.period == 61){
                 camera.NextFrame(1, 0, 1);
             }
-            else if(camera.period == 122){
+            else if(camera.period == 62){
                 camera.NextFrame(1, 1.5, 0);
             }
-            else if(camera.period == 123){
+            else if(camera.period == 63){
                 camera.NextFrame(1, 0, 1.5);
             }
         }
-        else if(camera.period == 120){
-            camera.NewTarget(0, 1, 121);
+        else if(camera.period == 60){
+            camera.NewTarget(0, 0.3, 61);
         }
-        else if(camera.period == 121){
-            camera.NewTarget(-0.3, 0.2, 122);
+        else if(camera.period == 61){
+            camera.NewTarget(-0.1, 0.2, 62);
         }
-        else if(camera.period == 122){
-            camera.NewTarget(0, 0.6, 123);
+        else if(camera.period == 62){
+            camera.NewTarget(0, 0.1, 63);
         }
         else{
+            audio.pause();
             audio.currentTime = 0;
+            audio.volume = 1;
             audio.play();
             gameScores = 0;
             lifePoint = leafNodes.length;
@@ -124,46 +127,23 @@ function GamingScreen(){
     requestAnimationFrame(GamingScreen);
     // RATIO = 1.505 - 0.445 * Math.sin(Math.PI/4 * (Date.now()-ts)/1000);
 }
-function Resize(boxID, canvas, context, fillStyle=undefined){
-    if(WIDTH != window.innerWidth * RATIO || HEIGHT != window.innerHeight * RATIO){
-        WIDTH = window.innerWidth * RATIO;
-        HEIGHT = window.innerHeight * RATIO;
-        let box = document.querySelector(boxID);
-        canvas.width = WIDTH;
-        canvas.height = HEIGHT;
-        canvas.style.width = WIDTH/RATIO + "px";
-        canvas.style.height = HEIGHT/RATIO + "px";
-        box.style.width = WIDTH/RATIO + "px";
-        box.style.height = HEIGHT/RATIO + "px";
-        if(fillStyle != undefined){
-            context.beginPath();
-            context.rect(0, 0, WIDTH, HEIGHT);
-            context.fillStyle = fillStyle;
-            context.fill();
-        }
-        Background.SetRange(WIDTH, HEIGHT);
-        context.lineCap = lineCap[1];
-    }
-}
 function Redraw(){
     clear(context);
     AudioProcess();
     context.fillStyle = 'rgba(0,0,0,0.7)';
     context.fillRect(0, 0, WIDTH, HEIGHT);
-    let x = camera.pointX * WIDTH - 0 * (myMouse.pointX - 0.5 * WIDTH) * 0.1;
-    let y = camera.pointY * HEIGHT - (myMouse.pointY - 0.5 * HEIGHT) * 0.1;
+    let x = camera.pointX * WIDTH - 0 * (myMouse.pointX - 0.5 * WIDTH);
+    let y = camera.pointY * HEIGHT - 0 * (myMouse.pointY - 0.5 * HEIGHT);
     context.translate(x, y);
     myTree.Transform();
     myTree.Draw();
     AnimeProcess();
     context.translate(-x, -y);
     MouseAnime();
-    context.font = WIDTH * 0.015 + 'px IBM Plex Sans Arabic';
-    context.strokeStyle = 'rgba(179, 198, 213, 1)';
-    context.lineWidth = 3;
-    // context.textAlign = 'center';
-    context.strokeText("分數: " + Math.floor(gameScores/RATIO), WIDTH * 0.55, HEIGHT * 0.85);
-    context.strokeText("生命值: " + leafNodes.length + " / " + lifePoint, WIDTH * 0.55, HEIGHT * 0.90);
+    context.font = (0.01 * WIDTH + 0.02 * HEIGHT) + 'px IBM Plex Sans Arabic';
+    context.fillStyle = 'rgba(231, 190, 120, 1)';
+    context.fillText("分數: " + Math.floor(gameScores/RATIO), WIDTH * 0.55, HEIGHT * 0.85);
+    context.fillText("生命值: " + leafNodes.length + " / " + lifePoint, WIDTH * 0.55, HEIGHT * 0.90);
 }
 function clear(context){
     // context.clearRect(0, 0, WIDTH, HEIGHT);
@@ -173,15 +153,15 @@ function clear(context){
     context.fill();
 }
 function MouseAnime(){
-    freeMouse.NextFrame();
+    // freeMouse.NextFrame();
     myMouse.NextFrame();
-    animeList.forEach(obj => {
-        obj.rotateOmega = freeMouse.pointX * 40 / obj.period / 180 * Math.PI;
-        if(mode == 'Free'){
-            obj.scaleX = 1 + freeMouse.pointX/2;
-            obj.scaleY = 1 + freeMouse.pointY/2;
-        }
-    })
+    // animeList.forEach(obj => {
+    //     obj.rotateOmega = freeMouse.pointX * 40 / obj.period / 180 * Math.PI;
+    //     if(mode == 'Free'){
+    //         obj.scaleX = 1 + freeMouse.pointX/2;
+    //         obj.scaleY = 1 + freeMouse.pointY/2;
+    //     }
+    // })
 }
 function AnimeProcess(){
     animeList.forEach(obj => obj.NextFrame());

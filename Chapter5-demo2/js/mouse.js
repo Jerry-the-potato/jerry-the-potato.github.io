@@ -37,8 +37,8 @@ let Trail = function(x = 0, y = 0, visibility = false){
             this.timer--;
         }
         if(visibility){
-            let width = WIDTH * 0.05;
-            let height = WIDTH * 0.05 * mouseImg.height / mouseImg.width;
+            let width = 0.03 * WIDTH + 0.04 * HEIGHT;
+            let height = width * mouseImg.height / mouseImg.width;
             context.save();
             context.translate(this.pointX, this.pointY);
             context.drawImage(mouseImg, -width/2, -height/2, width, height);
