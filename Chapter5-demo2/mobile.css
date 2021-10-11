@@ -8,6 +8,7 @@ html, body{
 #header #game-menu button, 
 #header #game-menu select{
     padding: 0.7em 0.5em;
+    border-width: 1px;
 }
 
 #header #game-menu select{
