@@ -1,0 +1,117 @@
+@charset "UTF-8";
+
+/* default css */
+h1, h2, h3, p, div, span, ul, li{
+    margin: 0;
+    padding: 0;
+    /* line-height: 1;
+    font-weight: normal; */
+}
+ul, li{
+    list-style-type: none;
+}
+
+/* 基本版面架構 */
+html{
+    font-size: 16px;
+}
+body{
+	touch-action: none;
+	margin: 0;
+    font-family: 'IBM Plex Sans Arabic', 'Noto Sans TC', sans-serif;
+    --main-color:     hsl(212, 55%, 55%);
+    --darker-color:   rgb(0, 19, 34);
+    --soft-color:     rgba(179, 198, 213, 1);
+    --textbg-color: rgba(255, 255, 255, 0.6);
+}
+#game-box{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 100px;
+    right: 0;
+    margin: auto;
+    /* background-color: #000; */
+    /* border-color: #000; */
+    /* overflow: hidden; */
+}
+#canvas{
+    position: absolute;
+}
+
+/* 頁首設定 */
+#header{
+    position: absolute;
+    left: -140px;
+    width: 130px;
+    height: 100%;
+    font-size: 1rem;
+    background-color: transparent;
+}
+    #header #game-menu{
+        width: 100%;
+        height: 100%;
+    }
+    #header #game-menu ul{
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+    }
+    #header #game-menu li{
+        transition: all 0.2s ease;
+        overflow: hidden;
+    }
+    #header #game-menu button{
+        position: relative;
+        left: 50%;
+        transform: translate(-50% , 0);
+        min-width: 6em;
+        min-height: 2em;
+    }
+    #header #game-menu select{
+        max-width: 8em;
+        min-height: 2em;
+    }
+    #header #game-menu button, #header #game-menu select{
+        font-size: 1.2em;
+        color: var(--main-color);
+        background-color: transparent;
+        border-color: var(--soft-color);
+        border-style: solid;
+        border-width: 2px;
+        border-radius: 0.5em;
+        padding: 0.2em 0.5em;
+        margin: 0.15em;
+        outline: none;
+        cursor: pointer;
+        display: inline-block;
+        transition: all 0.2s ease;
+    }
+    #header #game-menu button:hover, #header #game-menu select:hover{
+        color: var(--darker-color);
+        background-color:  #fff;
+        border-color: var(--soft-color);
+        border-style: outset;
+        border-width: 2px;
+        text-transform: uppercase;
+        font-weight: bold;
+    }
+    #header #game-menu button:focus, #header #game-menu select:focus{
+        color: #000;
+        background-color:  rgba(179, 198, 213, 0.9);
+        border-color: var(--soft-color);
+        text-transform: uppercase;
+    }
+    #header #dialog-box{
+        margin: 0.5em;
+    }
+    #header h3{
+        font-size: 1.5em;
+        margin-bottom: 0.5em;
+        color: var(--main-color);
+    }
+    #header p{
+        font-size: 1em;
+        color: var(--darker-color);
+        opacity: 0.7;
+    }

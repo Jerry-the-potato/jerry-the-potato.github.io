@@ -1,0 +1,24 @@
+/* 頁首設定 */
+
+#game-box{
+    left: 0;
+    bottom: 200px;
+}
+
+#header{
+    font-size: 0.9em;
+}
+#header{
+    position: absolute;
+    bottom: -140px;
+    left: -10%;
+    width: 120%;
+    height: 100px;
+}
+    #header #game-menu ul{
+        width: 100%;
+        flex-direction: row;
+    }
+    #header #game-menu li{
+        width: 33%;
+    }

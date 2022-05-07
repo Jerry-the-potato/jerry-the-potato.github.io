@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+
+<html>
+    <head>
+		<meta charset="utf-8" >
+        <title>Animation</title>
+
+        <link rel="stylesheet" type="text/css" href="./main.css">
+        <link rel="stylesheet" type="text/css" href="./mobile.css" media="(max-width:667px)">
+        <!-- <script src="./js/loadImg.js"></script> -->
+
+        <!--Google Fonts-->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300&family=Noto+Sans+TC:wght@300&display=swap" rel="stylesheet">
+    </head>
+
+    <body class="body">
+        <nav id="nav"></nav>
+        <div id="game-box">
+            <canvas id="canvas"></canvas>
+            <header id="header">
+                <div id="game-menu">
+                    <ul>
+                        <li><button id="square">方形: On</button></li>
+                        <li><button id="circle">圓形: Off</button></li>
+                        <li><button id="honeyComb">蜂巢: Off</button></li>
+                        <li><button id="gradient">漸變: On</button></li>
+                        <li><button id="spread">擴散: Off</button></li>
+                        <li><button id="reset">重置鈕</button></li>
+                    </ul>
+                    <div id="dialog-box">
+                        <h3 id="dialog">漸層色板</h3>
+                        <p id="hint">將其中一個顏色作為底色固定後，調整另外兩個顏色通道，來達到顏色漸變的效果</p>
+                    </div>
+                </div>
+            </header>
+        </div>
+
+        <!-- Javascript -->
+        <script src="./js/default.js"></script>
+        <script src="./js/mouse.js"></script>
+        <script src="./js/branches.js"></script>
+        <script src="./js/pixel.js"></script>
+        <script src="./js/event.js"></script>
+        <script src="./js/main.js"></script>
+    </body>
+
+</html>
