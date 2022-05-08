@@ -19,10 +19,10 @@ function Resize(boxID, canvas, context, fillStyle=undefined){
     // if(WIDTH != window.innerWidth * RATIO || HEIGHT != window.innerHeight * RATIO){
     //     WIDTH = window.innerWidth * RATIO;
     //     HEIGHT = window.innerHeight * RATIO;
-    let a = (window.innerWidth - 200 <= window.innerHeight - 100) ? window.innerWidth - 200 : window.innerHeight - 100;
+    let a = (window.innerWidth*0.8 <= window.innerHeight*0.8) ? window.innerWidth*0.8 : window.innerHeight*0.8;
     if(WIDTH != a * RATIO){
-            WIDTH = a * RATIO;
-            HEIGHT = a * RATIO;
+        WIDTH = a * RATIO;
+        HEIGHT = a * RATIO;
         let box = document.querySelector(boxID);
         canvas.width = WIDTH;
         canvas.height = HEIGHT;

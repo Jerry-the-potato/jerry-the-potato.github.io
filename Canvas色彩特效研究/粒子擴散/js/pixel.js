@@ -1,12 +1,12 @@
 let pixelCreater = function(width = 100, height = 100, x = WIDTH/2, y = HEIGHT/2, R = 255, G = 200, B = 200){
     // 建立一維陣列
-    this.cube = 30;
-    width = Math.ceil(width / this.cube) + 10;
+    this.cube = 24 * RATIO;
+    width = Math.ceil(width / this.cube) + 5;
     height = Math.ceil(height / this.cube) + 2;
     if(height < 20){
-        width*= 2;
-        height*= 2;
-        this.cube/= 2;
+        width = Math.ceil(width * 1.4);
+        height = Math.ceil(height * 1.4);
+        this.cube/= 1.4;
     }
     console.log("width: " + width, "height: " + height);
     this.x = x - WIDTH / 2; // 置中

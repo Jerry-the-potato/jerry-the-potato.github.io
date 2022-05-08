@@ -28,8 +28,8 @@ body{
     position: absolute;
     top: 0;
     bottom: 0;
-    left: 100px;
-    right: 0;
+    left: 0;
+    right: 200px;
     margin: auto;
     /* background-color: #000; */
     /* border-color: #000; */
@@ -42,8 +42,8 @@ body{
 /* 頁首設定 */
 #header{
     position: absolute;
-    left: -140px;
-    width: 130px;
+    right: -200px;
+    width: 150px;
     height: 100%;
     font-size: 1rem;
     background-color: transparent;
@@ -56,6 +56,7 @@ body{
         display: flex;
         flex-wrap: wrap;
         flex-direction: column;
+        height: 50%;
     }
     #header #game-menu li{
         transition: all 0.2s ease;
@@ -63,8 +64,8 @@ body{
     }
     #header #game-menu button{
         position: relative;
-        left: 50%;
-        transform: translate(-50% , 0);
+        /* left: 50%;
+        transform: translate(-50% , 0); */
         min-width: 6em;
         min-height: 2em;
     }
@@ -104,6 +105,7 @@ body{
     }
     #header #dialog-box{
         margin: 0.5em;
+        margin-top: 1em;
     }
     #header h3{
         font-size: 1.5em;
