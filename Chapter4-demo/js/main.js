@@ -61,9 +61,9 @@ function MouseAnime(){
     })
 }
 
-window.shrink = 1;//4 + Math.floor(4000 / WIDTH);
+window.shrink = 4 + Math.floor(4000 / WIDTH); // 1;
 window.thick = -1;
-window.padding = 0.8;//3 + Math.floor(4000 / WIDTH);
+window.padding = 3 + Math.floor(4000 / WIDTH); // 0.8;
 function AudioProcess(){
     let bands = audioCtx.sampleRate / analyserNode.fftSize * 2; // 每個區段的頻寬
     let HighestBands = 16000; // 16kHz高音頻以下的音樂
