@@ -12,20 +12,22 @@ function PlayOn(bool) {
             //由於播放音樂需要透過用戶請求，當用戶"第一次"點擊時才建立音效物件
             audioCtx = new (window.AudioContext || window.webkitAudioContext)();
             myAudio = document.getElementById("Music");
-            source = audioCtx.createMediaElementSource(myAudio);
             console.log("Request confirm : preparing analyserNode");
+			
+            source = audioCtx.createMediaElementSource(myAudio);
+			analyserNode = audioCtx.createAnalyser();
+	        source.connect(analyserNode);
+			
+	        analyserNode.connect(audioCtx.destination);
+	        analyserNode.fftSize = 2048; // 從0-674為有效範圍
+	        bufferLength = analyserNode.frequencyBinCount;
         }
         //避免播放兩次
         if (document.getElementById("Music").paused == false) {
             console.log("Invalid move : it's playing now");
             return 0;
         }
-        analyserNode = audioCtx.createAnalyser();
-        source.connect(analyserNode);
-        analyserNode.connect(audioCtx.destination);
-    
-        analyserNode.fftSize = 2048; // 從0-674為有效範圍
-        bufferLength = analyserNode.frequencyBinCount;
+
         myAudio.play();
     }
     else {
