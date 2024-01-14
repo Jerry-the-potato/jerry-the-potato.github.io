@@ -197,7 +197,7 @@ let myMouse = new mouseTrail(0, 0);
 				this.innerText = "開始動畫";
 			}
 			else{
-				trasitionOmega = 0.003;
+				trasitionOmega = Math.PI / 10000;
 				this.innerText = "停止動畫";
 			}
 		}, false);
