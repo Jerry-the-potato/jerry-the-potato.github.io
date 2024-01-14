@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+
+<html>
+    <head>
+		<meta charset="utf-8" >
+        <meta name="viewport" content="width=device-width">
+        <title>LokaVolterra</title>
+
+        <link rel="stylesheet" type="text/css" href="./main.css">
+        <link rel="stylesheet" type="text/css" href="./mobile.css" media="(max-width:992px)">
+        <!-- <script src="./js/loadImg.js"></script> -->
+
+        <!--Google Fonts-->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300&family=Noto+Sans+TC:wght@300&display=swap" rel="stylesheet">
+        
+    </head>
+
+    <body class="body">
+        <nav id="nav"></nav>
+        <div id="game-box">
+            <canvas id="canvas"></canvas>
+            <header id="header">
+                <div id="game-menu">
+                    <h3>Values :</h3>
+                    <label for="alpha-equation">Alpha : </label>
+                    <input type="number" id="alpha-equation" name="alpha-equation" value="5">,
+
+                    <label for="beta-equation">Beta : </label>
+                    <input type="number" id="beta-equation" name="beta-equation" value="10">,
+
+                    <label for="gamma-equation">Gamma : </label>
+                    <input type="number" id="gamma-equation" name="gamma-equation" value="5">,
+
+                    <label for="delta-equation">Delta : </label>
+                    <input type="number" id="delta-equation" name="delta-equation" value="10">,
+
+                    <label for="dlength">Vector Size : </label>
+                    <input type="number" id="dlength" name="dlength" value="15">
+
+                    <label for="speed">Transform Speed : </label>
+                    <input type="number" id="speed" name="speed" value="10">
+                    
+                    <!-- <label for="scale">1/Scale : </label>
+                    <input type="number" id="scale" name="scale" value="50"> -->
+                    <h3>功能</h3>
+                    <button id="pause">停止動畫</button>
+                    <button id="mouseOn">跟隨滑鼠</button>
+                    <button id="transform">取消縮放</button>
+                    
+                </div>
+                <div id="dialog-box">
+                    <h3 id="dialog">Lotka Volterra 微分方程組，用於描述捕食者和獵物的此消彼長，呈現漩渦紋理</h3>
+                </div>
+            </header>
+        </div>
+
+        <!-- Javascript -->
+        <script src="./js/main.js"></script>
+    </body>
+
+</html>
